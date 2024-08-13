@@ -3,7 +3,6 @@ from tkinter import *
 
 
 
-# حل مشكلة .1 + .2
 def a(event):
 
     if event.keysym == "7":
