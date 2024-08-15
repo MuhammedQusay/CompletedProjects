@@ -5,7 +5,7 @@ def ask_nums(how_many_nums: int) -> list[float]:
     nums: list[float] = []
     for _ in range(how_many_nums):
         try:
-            nums.append(float(input(f"Enter the {'first' if _ == 0 else 'second'} number: ")))
+            nums.append(float(input(f"Enter the {'' if len(how_many_nums) == 1 else 'first' if _ == 0 else 'second'} number: ")))
         except ValueError:
             print("Please enter numbers only.")
     return nums
