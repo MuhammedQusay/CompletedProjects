@@ -1,99 +1,107 @@
-import random
+from random import randint
 from math import ceil
+from os import system
 
 
-minX = None
-minX = None
-playing = True
-pc_choice = None
-limitOfTries = None
-player_guess = None
-numberOfTries = None
+def main() -> None:
+    lowest_num, highest_num = get_number_range()
+
+    pc_choice: int = randint(lowest_num, highest_num)
+
+    limit_of_tries: int = ceil((highest_num - lowest_num) ** .5)
+    number_of_tries: int = 1
+
+    print(f"\nOk, now I hold a number between {lowest_num} and {highest_num}, try to guess it.")
+    print(f"But you have only {limit_of_tries} tries.")
+
+    while True:
+        while True:
+
+            player_guess: str = input(f"\nGuess the number ({number_of_tries}/{limit_of_tries}): ")
+
+            if check_if_int(player_guess):
+                player_guess: int = int(player_guess)
+                break
+
+        if player_guess == pc_choice:
+            print()
+            print(f"Congratulations! You guessed the number in {number_of_tries} tries out of {limit_of_tries}.".center(
+                80, "🥳"))
+            break
+
+        elif number_of_tries == limit_of_tries:
+            print(f"\nYou've reached the maximum number of guesses. You lost! The number was {pc_choice}.")
+            break
+
+        elif player_guess > pc_choice:
+            print("\nTry lower.")
+        elif player_guess < pc_choice:
+            print("\nTry higher.")
+        number_of_tries += 1
 
 
+def get_number_range() -> tuple[int, int]:
+    print("From which number to which number you want me to hold?")
 
-def from_to():
-    print("""
-From which number to which number you want me to hold?
-          """)
+    while True:
+        lowest_num: str = input("Enter the minimum number: ")
+        if check_if_int(lowest_num):
+            lowest_num: int = int(lowest_num)
+            break
 
-    minX = input("from: ")
+    while True:
+        highest_num: str = input("Enter the maximum number: ")
+        if check_if_int(highest_num):
+            highest_num: int = int(highest_num)
+            break
 
-    while not checkIfNum1(minX):
-        print("Invalid input. Please input a number.")
-        minX = input("from: ")
-    minX = int(minX)
+    system("cls||clear")
 
-    maxX = input("to: ")
+    if lowest_num == highest_num:
+        print("Yeah so funny, select the numbers again.")
+        lowest_num, highest_num = get_number_range()
 
-    while not checkIfNum1(maxX):
-        print("Invalid input. Please input a number.")
-        maxX = input("to: ")
-    maxX = int(maxX)
+    if lowest_num > highest_num:
+        print("Yeah you'r funny, I reversed it.")
+        lowest_num, highest_num = highest_num, lowest_num
 
-    if minX == maxX:
-        print("\nYeah so funny, select the numbers again.")
-        minX, maxX = from_to()
-    elif minX > maxX:
-        minX, maxX = maxX, minX
-
-    return minX, maxX
+    return lowest_num, highest_num
 
 
-def checkIfNum1(thenum):
+def check_if_int(the_num) -> bool:
     try:
-        int(thenum)
+        int(the_num)
+        return True
+
     except:
+        print("Invalid input. Please input a number.")
         return False
-    return True
 
 
 if __name__ == "__main__":
+    system("cls||clear")
 
     print("\n" + "=" * 80)
     print(" WELCOME TO GUESS THE NUMBER GAME! ".center(80, "-"))
-    print("=" * 80 , "\n")
+    print("=" * 80, "\n")
 
-    print("Hi, let me explain the game to you.\nFirst of all, you will select two numbers for me to hold a number between them, then you will try to guess it. (But don't forget, you have a limited tries).\nGood luck. 😉")
+    print("Hi, let me explain the game to you.\nFirst of all, you will select two numbers for me to hold a number between them, then you will try to guess it. (But don't forget, you have a limited number of tries).\nGood luck. 😉")
 
-    while playing:
+    play: str = "y"
 
-        minX, maxX = from_to()
+    while True:
+        if play == "y":
+            main()
+        elif play == "n":
+            system("cls||clear")
+            break
+        else:
+            print("Please enter y or n.")
 
-        while input(f"\nYou want me to hold a number between {minX} and {maxX}, right? (y/n) ").strip().lower() == "n":
-            minX, maxX = from_to()
+        play: str = input("\nWould you like to play again? (y/n) ").strip().lower()
 
-        pc_choice = random.randint(minX, maxX)
-
-        limitOfTries = ceil((maxX-minX) ** .5)
-        numberOfTries = 0
-
-        print(f"\nOk, now I hold a number between {minX} and {maxX}, try to guess it.")
-        print(f"But you have only {limitOfTries} tries.")
-
-        while True:
-            player_guess = input(f"\nGuess number {numberOfTries+1} out of {limitOfTries}: ")
-            while not checkIfNum1(player_guess):
-                print("\nEnter a number please,")
-                player_guess = input(f"Guess number {numberOfTries+1} out of {limitOfTries}: ")
-            player_guess = int(player_guess)
-
-            if player_guess == pc_choice:
-                print()
-                print(f" Congratulations, you guessed in {numberOfTries+1} out of {limitOfTries} tries.".center(60, "🥳"))
-                break
-            elif numberOfTries+1 == limitOfTries:
-                print(f"\nYou reached the limit of guesses, you lost, the number was {pc_choice}.")
-                break
-            elif player_guess > pc_choice:
-                print("\ntry lower")
-            elif player_guess < pc_choice:
-                print("\ntry higher")
-            numberOfTries += 1
-
-        if input("\nDo you want to play again? (y/n) ").strip().lower() == "n":
-            playing = False
     print("#" * 80)
     print(" Thank you for playing! ".center(80, "="))
     print("#" * 80)
-
+    input("Press enter to quit...")
+    quit()
