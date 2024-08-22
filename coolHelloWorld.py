@@ -2,6 +2,7 @@ import string
 from time import sleep
 from random import choice
 
+
 if __name__ == "__main__":
     the_word = "Hello world"
     x = "0"
@@ -16,4 +17,3 @@ if __name__ == "__main__":
             x = choice(string.ascii_lowercase)
             print(the_word[:index]+x)
             sleep(.05)
-
