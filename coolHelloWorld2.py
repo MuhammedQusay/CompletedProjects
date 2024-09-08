@@ -17,10 +17,10 @@ if __name__ == "__main__":
 
             if letter.lower() == the_random_word[index].lower():
 
-                the_random_word[index] = letter
+                the_random_word[index]: str = letter
                 continue
 
-            the_random_word[index] = choice(string.ascii_lowercase)
+            the_random_word[index]: str = choice(string.ascii_lowercase)
 
 
         print("".join(the_random_word), end="\r")
