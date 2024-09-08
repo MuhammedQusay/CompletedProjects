@@ -9,11 +9,11 @@ if __name__ == "__main__":
 
     for index, letter in enumerate(the_word): 
 
-        while x != letter.lower():
+        while rand_letter != letter.lower():
 
             if letter == " ":
                 break
 
             rand_letter: str = choice(string.ascii_lowercase)
-            print(the_word[:index]+x)
+            print(the_word[:index]+rand_letter)
             sleep(.05)
