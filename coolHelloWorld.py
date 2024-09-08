@@ -4,8 +4,8 @@ from random import choice
 
 
 if __name__ == "__main__":
-    the_word = "Hello world"
-    x = "0"
+    the_word = input('What word do you want to me to type in a cool way? ("Hello world" for example)\n')
+    rand_letter: str = choice(string.ascii_lowercase)
 
     for index, letter in enumerate(the_word): 
 
@@ -14,6 +14,6 @@ if __name__ == "__main__":
             if letter == " ":
                 break
 
-            x = choice(string.ascii_lowercase)
+            rand_letter: str = choice(string.ascii_lowercase)
             print(the_word[:index]+x)
             sleep(.05)
