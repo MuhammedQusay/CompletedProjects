@@ -1,5 +1,4 @@
 import time
-import time
 
 
 def add(a, b):
