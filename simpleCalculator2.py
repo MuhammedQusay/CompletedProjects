@@ -1,5 +1,4 @@
 from os import system
-from os import system
 
 
 def ask_nums(how_many_nums: int) -> list[float]:
