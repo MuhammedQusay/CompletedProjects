@@ -1,7 +1,6 @@
 import random
 
 
-
 pc_choice = None
 player_choice = None
 
