@@ -1,6 +1,7 @@
 from os import system
 from os import system
 from time import sleep
+from time import sleep
 
 
 tasks: list = []
