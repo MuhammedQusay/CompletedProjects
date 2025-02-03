@@ -1,4 +1,5 @@
 def main():
+def main():
     while True:
         try:
             total_money: float = float(input("Enter the amount of the money you want to split: "))
