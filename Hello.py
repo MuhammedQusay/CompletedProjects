@@ -1,2 +1,2 @@
-eprint("Hello, world")
+print("Hello, world")
 print("Test world")
