@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import filedialog, ttk
 
 
-
 class NotePad:
     def __init__(self, root):
         self.root = root
