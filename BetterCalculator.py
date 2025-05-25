@@ -1,4 +1,4 @@
-# From the 2025 me to the 2023 me: Bro who wrote this code, I hope it was not me
+# From 2025 me to 2023 me: Bro, who wrote this code? I hope it wasn’t me.
 from tkinter import *
 
 
