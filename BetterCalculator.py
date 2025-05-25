@@ -1,3 +1,4 @@
+# From the 2025 me to the 2023 me: Bro who wrote this code, I hope it was not me
 from tkinter import *
 
 
